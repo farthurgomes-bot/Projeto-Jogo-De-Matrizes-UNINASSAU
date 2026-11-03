@@ -16,3 +16,12 @@ while rodando_programa == True:
     print("1. Jogar")
     print("2. Ver regras")
     print("3. Sair e ver estatisticas")
+    
+    opcao_valida = False
+    opcao = ""
+    while opcao_valida == False:
+        opcao = input("Escolha uma opcao: ")
+        if opcao == "1" or opcao == "2" or opcao == "3":
+            opcao_valida = True
+        else:
+            print("Opcao invalida! Digite 1, 2 ou 3.")
