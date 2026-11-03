@@ -10,4 +10,9 @@ max_seq_o = 0
 rodando_programa = True
 
 while rodando_programa == True:
-    pass
+    print("\n" + "="*30)
+    print("      JOGO DA VELHA")
+    print("="*30)
+    print("1. Jogar")
+    print("2. Ver regras")
+    print("3. Sair e ver estatisticas")
