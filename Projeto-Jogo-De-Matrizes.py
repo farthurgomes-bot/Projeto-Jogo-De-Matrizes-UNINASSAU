@@ -29,3 +29,6 @@ while rodando_programa == True:
     if opcao == "2":
         print("\nREGRAS: O tabuleiro tem 3x3. Os jogadores escolhem linha e coluna de 0 a 2.")
         print("Vence quem completar linha, coluna ou diagonal primeiro.")
+        
+    elif opcao == "1":
+        tab = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
