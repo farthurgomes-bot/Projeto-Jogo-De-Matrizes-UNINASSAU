@@ -54,7 +54,10 @@ if opcao == "1":
                 if valida_coluna == False:
                     print("Erro: Digite 0, 1 ou 2.")
             
-            jogada_valida = True
+            if tab[linha_jog][coluna_jog] == " ":
+                jogada_valida = True
+            else:
+                print("Casa ocupada! Jogue em um espaco livre.")
         
         tab[linha_jog][coluna_jog] = turno
         
