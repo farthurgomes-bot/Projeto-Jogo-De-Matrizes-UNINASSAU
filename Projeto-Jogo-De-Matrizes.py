@@ -71,6 +71,12 @@ if opcao == "1":
             vencedor = turno
         if tab[0][2] == turno and tab[1][1] == turno and tab[2][0] == turno:
             vencedor = turno
+            
+        casas_vazias = 0
+        for i in range(3):
+            for j in range(3):
+                if tab[i][j] == " ":
+                    casas_vazias = casas_vazias + 1
         
         if turno == "X":
             turno = "O"
