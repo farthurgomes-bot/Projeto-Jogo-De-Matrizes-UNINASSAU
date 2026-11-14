@@ -77,10 +77,46 @@ if opcao == "1":
             for j in range(3):
                 if tab[i][j] == " ":
                     casas_vazias = casas_vazias + 1
-        
-        if turno == "X":
-            turno = "O"
+                    
+        if vencedor != "":
+            print("\n  0 1 2")
+            for i in range(3):
+                linha_visual = str(i) + " "
+                for j in range(3):
+                    linha_visual = linha_visual + tab[i][j]
+                    if j < 2:
+                        linha_visual = linha_visual + "|"
+                print(linha_visual)
+                if i < 2:
+                    print("  -+-+-")
+                    
+            print("\n>>> JOGADOR", vencedor, "VENCEU! <<<")
+            total_partidas = total_partidas + 1
+            
+            if vencedor == "X":
+                vitorias_x = vitorias_x + 1
+                seq_atual_x = seq_atual_x + 1
+                seq_atual_o = 0
+                if seq_atual_x > max_seq_x:
+                    max_seq_x = seq_atual_x
+            else:
+                vitorias_o = vitorias_o + 1
+                seq_atual_o = seq_atual_o + 1
+                seq_atual_x = 0
+                if seq_atual_o > max_seq_o:
+                    max_seq_o = seq_atual_o
+                    
+            partida_andamento = False
+            
+        elif casas_vazias == 0:
+            print("\n>>> DEU EMPATE! <<<")
+            total_partidas = total_partidas + 1
+            empates = empates + 1
+            seq_atual_x = 0
+            seq_atual_o = 0
+            partida_andamento = False
         else:
-            turno = "X"
-        
-        partida_andamento = False
+            if turno == "X":
+                turno = "O"
+            else:
+                turno = "X"
