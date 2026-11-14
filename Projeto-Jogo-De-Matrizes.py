@@ -61,6 +61,17 @@ if opcao == "1":
         
         tab[linha_jog][coluna_jog] = turno
         
+        for i in range(3):
+            if tab[i][0] == turno and tab[i][1] == turno and tab[i][2] == turno:
+                vencedor = turno
+            if tab[0][i] == turno and tab[1][i] == turno and tab[2][i] == turno:
+                vencedor = turno
+        
+        if tab[0][0] == turno and tab[1][1] == turno and tab[2][2] == turno:
+            vencedor = turno
+        if tab[0][2] == turno and tab[1][1] == turno and tab[2][0] == turno:
+            vencedor = turno
+        
         if turno == "X":
             turno = "O"
         else:
