@@ -10,9 +10,9 @@ max_seq_o = 0
 rodando_programa = True
 
 while rodando_programa == True:
-    print("\n" + "="*30)
-    print("      JOGO DA VELHA")
-    print("="*30)
+    print("\n" + "="*35)
+    print("          JOGO DA VELHA")
+    print("="*35)
     print("1. Jogar")
     print("2. Ver regras")
     print("3. Sair e ver estatisticas")
@@ -27,8 +27,13 @@ while rodando_programa == True:
             print("Opcao invalida! Digite 1, 2 ou 3.")
             
     if opcao == "2":
-        print("\nREGRAS: O tabuleiro tem 3x3. Os jogadores escolhem linha e coluna de 0 a 2.")
-        print("Vence quem completar linha, coluna ou diagonal primeiro.")
+        print("\n" + "-"*35)
+        print("REGRAS DO JOGO DA VELHA:")
+        print("- O tabuleiro e uma matriz 3x3 (linhas e colunas de 0 a 2).")
+        print("- O Jogador X comeca e alterna os turnos com o Jogador O.")
+        print("- Vence quem alinhar 3 simbolos na linha, coluna ou diagonal.")
+        print("-"*35)
+        input("Pressione ENTER para voltar ao menu...")
         
     elif opcao == "1":
         tab = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
@@ -127,6 +132,7 @@ while rodando_programa == True:
                     if seq_atual_o > max_seq_o:
                         max_seq_o = seq_atual_o
                         
+                input("\nPressione ENTER para voltar ao menu...")
                 partida_andamento = False
                 
             elif casas_vazias == 0:
@@ -146,6 +152,7 @@ while rodando_programa == True:
                 empates = empates + 1
                 seq_atual_x = 0
                 seq_atual_o = 0
+                input("\nPressione ENTER para voltar ao menu...")
                 partida_andamento = False
             else:
                 if turno == "X":
@@ -154,21 +161,12 @@ while rodando_programa == True:
                     turno = "X"
 
     elif opcao == "3":
-        print("\n" + "="*30)
-        print("   ESTATISTICAS DA SESSAO")
-        print("="*30)
+        print("\n" + "="*35)
+        print("      ESTATISTICAS DA SESSAO")
+        print("="*35)
         print("Total de partidas:", total_partidas)
         print("Vitorias X:", vitorias_x)
         print("Vitorias O:", vitorias_o)
         print("Empates:", empates)
         
-        if total_partidas > 0:
-            perc_x = (vitorias_x / total_partidas) * 100
-            perc_o = (vitorias_o / total_partidas) * 100
-            print("Aproveitamento X:", round(perc_x, 1), "%")
-            print("Aproveitamento O:", round(perc_o, 1), "%")
-            
-        print("Maior sequencia X:", max_seq_x)
-        print("Maior sequencia O:", max_seq_o)
-        print("\nEncerrando programa...")
-        rodando_programa = False
+        if total_partidas
