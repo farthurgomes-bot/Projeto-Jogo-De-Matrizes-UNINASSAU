@@ -94,3 +94,140 @@ while rodando_programa:
                         if c_str == str(n):
                             valida_coluna = True
                             coluna_jog = n
+
+                    if not valida_coluna:
+                        print("Erro: digite 0, 1 ou 2.")
+
+                if tab[linha_jog][coluna_jog] == " ":
+                    jogada_valida = True
+                else:
+                    print("Casa ocupada! Escolha outro espaco.")
+
+            tab[linha_jog][coluna_jog] = turno
+
+            for i in range(3):
+                if tab[i][0] == turno and tab[i][1] == turno and tab[i][2] == turno:
+                    vencedor = turno
+
+                if tab[0][i] == turno and tab[1][i] == turno and tab[2][i] == turno:
+                    vencedor = turno
+
+            diagonal_principal = True
+            diagonal_secundaria = True
+
+            for i in range(3):
+                if tab[i][i] != turno:
+                    diagonal_principal = False
+
+                if tab[i][2 - i] != turno:
+                    diagonal_secundaria = False
+
+            if diagonal_principal or diagonal_secundaria:
+                vencedor = turno
+
+            casas_vazias = 0
+
+            for i in range(3):
+                for j in range(3):
+                    if tab[i][j] == " ":
+                        casas_vazias = casas_vazias + 1
+
+            if vencedor != "":
+                print("\n  0 1 2")
+
+                for i in range(3):
+                    linha_visual = str(i) + " "
+
+                    for j in range(3):
+                        linha_visual = linha_visual + tab[i][j]
+
+                        if j < 2:
+                            linha_visual = linha_visual + "|"
+
+                    print(linha_visual)
+
+                    if i < 2:
+                        print("  -+-+-")
+
+                print("\n>>> JOGADOR", vencedor, "VENCEU! <<<")
+                total_partidas = total_partidas + 1
+
+                if vencedor == "X":
+                    vitorias_x = vitorias_x + 1
+                    seq_atual_x = seq_atual_x + 1
+                    seq_atual_o = 0
+
+                    if seq_atual_x > max_seq_x:
+                        max_seq_x = seq_atual_x
+                else:
+                    vitorias_o = vitorias_o + 1
+                    seq_atual_o = seq_atual_o + 1
+                    seq_atual_x = 0
+
+                    if seq_atual_o > max_seq_o:
+                        max_seq_o = seq_atual_o
+
+                print("\nPLACAR DA SESSAO")
+                print("Vitorias X:", vitorias_x)
+                print("Vitorias O:", vitorias_o)
+                print("Empates:", empates)
+                input("\nPressione ENTER para voltar ao menu...")
+                partida_andamento = False
+
+            elif casas_vazias == 0:
+                print("\n  0 1 2")
+
+                for i in range(3):
+                    linha_visual = str(i) + " "
+
+                    for j in range(3):
+                        linha_visual = linha_visual + tab[i][j]
+
+                        if j < 2:
+                            linha_visual = linha_visual + "|"
+
+                    print(linha_visual)
+
+                    if i < 2:
+                        print("  -+-+-")
+
+                print("\n>>> DEU EMPATE! <<<")
+                total_partidas = total_partidas + 1
+                empates = empates + 1
+                seq_atual_x = 0
+                seq_atual_o = 0
+
+                print("\nPLACAR DA SESSAO")
+                print("Vitorias X:", vitorias_x)
+                print("Vitorias O:", vitorias_o)
+                print("Empates:", empates)
+                input("\nPressione ENTER para voltar ao menu...")
+                partida_andamento = False
+
+            else:
+                if turno == "X":
+                    turno = "O"
+                else:
+                    turno = "X"
+
+    elif opcao == "3":
+        print("\n" + "=" * 35)
+        print("      ESTATISTICAS DA SESSAO")
+        print("=" * 35)
+        print("Total de partidas:", total_partidas)
+        print("Vitorias X:", vitorias_x)
+        print("Vitorias O:", vitorias_o)
+        print("Empates:", empates)
+
+        if total_partidas > 0:
+            porcentagem_x = (vitorias_x / total_partidas) * 100
+            porcentagem_o = (vitorias_o / total_partidas) * 100
+        else:
+            porcentagem_x = 0
+            porcentagem_o = 0
+
+        print("Porcentagem de vitorias X:", porcentagem_x, "%")
+        print("Porcentagem de vitorias O:", porcentagem_o, "%")
+        print("Maior sequencia de vitorias X:", max_seq_x)
+        print("Maior sequencia de vitorias O:", max_seq_o)
+        rodando_programa = False
